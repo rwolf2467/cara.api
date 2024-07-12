@@ -1,11 +1,11 @@
 from setuptools import setup
 
-with open("README.md", "r", encoding="utf-8") as fh:
+with open("readme_pachage.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
     name='cara_api',
-    version='1.2.9',
+    version='1.3',
     packages=["cara_api"],
     install_requires=["requests", "reds-simple-logger"],
     author="Red_Wolf2467",

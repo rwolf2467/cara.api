@@ -43,27 +43,27 @@ class CaraAPI:
                    MessageID: int, GuildName: str, ChannelName: str, AuthorName: str, GoodWords, log:bool, OnlyASCII:bool = True, ):
         try:
             if log:
-                logger.working("Sending request to API endpoint...")
+                logger.working("CaraAPI: " + "Sending request to API endpoint...")
             if OnlyASCII == True:
                 OnlyASCII = "True"
             else:
                 OnlyASCII = "False"
             if log:
-                logger.waiting("Waiting for response from endpoint...")
+                logger.waiting("CaraAPI: " + "Waiting for response from endpoint...")
 
-                logger.info(str(self.api_key))
-                logger.info(str(message))
-                logger.info(str(levenshtein))
-                logger.info(str(";".join(FilteredWords)))
-                logger.info(str(";".join(GoodWords)))
-                logger.info(str(GuildID))
-                logger.info(str(ChannelID))
-                logger.info(str(AuthorID))
-                logger.info(str(MessageID))
-                logger.info(str(GuildName))
-                logger.info(str(ChannelName))
-                logger.info(str(AuthorName))
-                logger.info(str(OnlyASCII))
+                logger.info("CaraAPI: " + str(self.api_key))
+                logger.info("CaraAPI: " + str(message))
+                logger.info("CaraAPI: " + str(levenshtein))
+                logger.info("CaraAPI: " + str(";".join(FilteredWords)))
+                logger.info("CaraAPI: " + str(";".join(GoodWords)))
+                logger.info("CaraAPI: " + str(GuildID))
+                logger.info("CaraAPI: " + str(ChannelID))
+                logger.info("CaraAPI: " + str(AuthorID))
+                logger.info("CaraAPI: " + str(MessageID))
+                logger.info("CaraAPI: " + str(GuildName))
+                logger.info("CaraAPI: " + str(ChannelName))
+                logger.info("CaraAPI: " + str(AuthorName))
+                logger.info("CaraAPI: " + str(OnlyASCII))
             response = requests.get(
                     f'{cara_base_url}/api/ChatfilterAPI/msg',
                     params={
@@ -83,11 +83,11 @@ class CaraAPI:
                     }
                 )
             if response.status_code != 200:
-                logger.error("ERROR: " + str(response.status_code))
-                logger.error(response.text())
+                logger.error("CaraAPI : " + str(response.status_code))
+                logger.error("CaraAPI MESSAGE: " + response.text())
                 return
             response_json = response.json()
             return self.ChatFilterResponse(response_json)
         except Exception as e:
-            logger.error("Error prossessing request: " + str(e))
+            logger.error("CaraAPI: " + "Error prossessing request: " + str(e))
     
