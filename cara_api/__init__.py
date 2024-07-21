@@ -90,4 +90,42 @@ class CaraAPI:
             return self.ChatFilterResponse(response_json)
         except Exception as e:
             logger.error("CaraAPI: " + "Error prossessing request: " + str(e))
+
+
+    class UserResponse:
+        def __init__(self, response):
+            if response.status_code == 404:
+                self.user_name:str = None
+                self.isSpammer:bool = False
+                self.reason:str = None
+                self.user_id:int = None
+            else:
+                response = response.json()
+                self.user_name:str = response["displayName"]
+                self.isSpammer:bool = response["isSpammer"]
+                if response["isSpammer"] == True:
+                    self.reason:str = response["spamDetails"]["reason"]
+                else:
+                    self.reason:str = "None"
+                self.user_id:int = response["id"]
+
+    def get_user(self, user_id: str):
+        try:
+            response = requests.get(f"{cara_base_url}/api/UserAPI/user",
+                                    params={
+                                        "key": str(self.api_key),
+                                        "UserID": str(user_id)
+                                    })
+            if response.status_code != 200 and response.status_code != 404:
+                logger.error("CaraAPI: " + str(response.status_code) +";   " + response.text)
+                return
+            
+        
+            response_json = response
+            return self.UserResponse(response_json)
+            
+
+        except Exception as e:
+            logger.error("CARA API: " + str(e))
+
     
