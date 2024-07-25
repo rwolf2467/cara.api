@@ -42,3 +42,15 @@ print(request.result) # INT
   
 print(request.reason) # STRING
 ````
+
+### Uer
+````python
+from cara_api import CaraAPI
+
+caraAPI = CaraAPI("YOUR API-KEY")
+request = caraAPI.get_user(user_id=message.author.id)
+
+print(request.user_name)
+print(request.isSpammer)
+print(request.reason)
+````

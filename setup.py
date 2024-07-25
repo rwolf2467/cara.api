@@ -5,7 +5,7 @@ with open("readme_pachage.md", "r", encoding="utf-8") as fh:
 
 setup(
     name='cara_api',
-    version='1.3.1',
+    version='1.5.2',
     packages=["cara_api"],
     install_requires=["requests", "reds-simple-logger"],
     author="Red_Wolf2467",
