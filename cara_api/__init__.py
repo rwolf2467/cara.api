@@ -99,15 +99,10 @@ class CaraAPI:
                 self.isSpammer:bool = False
                 self.reason:str = None
                 self.user_id:int = None
-<<<<<<< HEAD
                 self.json = None
             else:
                 response = response.json()
                 self.json = response
-=======
-            else:
-                response = response.json()
->>>>>>> f1581dd094ade4bed28cfb21d7daab44109c4e54
                 self.user_name:str = response["displayName"]
                 self.isSpammer:bool = response["isSpammer"]
                 if response["isSpammer"] == True:
